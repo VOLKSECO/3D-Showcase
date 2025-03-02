@@ -27,6 +27,17 @@ async function fileExists(url) {
   }
 }
 
+// Ajouter les boutons interactifs à la scène
+createButtons(scene, camera, renderer); // Ajout de la fonction de création de boutons
+
+// Création du podium indépendamment du modèle
+createPodium(scene); // Ajout du podium à la scène sans dépendance du modèle
+
+import { createTextScene } from './3D-text.js';  // Importation de la fonction de création du texte
+
+// Créer les textes dans la scène
+createTextScene(scene);
+
 // Fonction pour choisir et charger le modèle approprié (OBJ ou GLTF)
 async function loadAppropriateModel() {
   const objExists = await fileExists('3D_model/scene.obj');
@@ -39,7 +50,6 @@ async function loadAppropriateModel() {
     console.log('Chargement du modèle OBJ...');
     import('./modelLoader_obj.js').then(({ loadModel }) => {
       model = loadModel(scene, camera, controls);
-      createPodium(scene, model);  // Créer le podium une fois le modèle chargé
     }).catch((err) => {
       console.error('Erreur lors du chargement du modèle OBJ:', err);
     });
@@ -47,7 +57,6 @@ async function loadAppropriateModel() {
     console.log('Chargement du modèle GLTF...');
     import('./modelLoader_gltf.js').then(({ loadModel }) => {
       model = loadModel(scene, camera, controls);
-      createPodium(scene, model);  // Créer le podium une fois le modèle chargé
     }).catch((err) => {
       console.error('Erreur lors du chargement du modèle GLTF:', err);
     });
@@ -69,9 +78,6 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   }, 100); // 100ms de délai pour limiter les appels
 });
-
-// Ajouter les boutons interactifs à la scène
-createButtons(scene, camera, renderer); // Ajout de la fonction de création de boutons
 
 // Animation et rendu en continu
 function animate() {

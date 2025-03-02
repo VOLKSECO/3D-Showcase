@@ -24,6 +24,7 @@ export function loadModel(scene, camera, controls) {
       });
 
       // 🔹 Corriger l'orientation du modèle (rotation)
+      
       object.rotation.x = -Math.PI / 2; // Rotation de 90° autour de l'axe X (si nécessaire)
       // Si l'objet est toujours couché, essayez une autre rotation comme object.rotation.y = Math.PI / 2;
 
@@ -74,7 +75,7 @@ function fitModelToGround(model, groundSize) {
 
   // Calcul du facteur d'échelle pour adapter au sol
   const maxModelSize = Math.max(size.x, size.z);
-  const scaleFactor = groundSize * 0.1 / maxModelSize; // On garde une marge de 10%
+  const scaleFactor = groundSize * 0.08 / maxModelSize; // On garde une marge de 10%
 
   // Appliquer l'échelle uniformément
   model.scale.set(scaleFactor, scaleFactor, scaleFactor);
