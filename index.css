@@ -1,0 +1,143 @@
+/* Styles globaux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  overflow: hidden; /* Pour éviter que la scène 3D dépasse */
+}
+
+h1 {
+  text-align: center;
+  margin: 20px;
+  font-size: 2rem;
+}
+
+/* Mise en page du sélecteur de modèle */
+#model-selector {
+  position: absolute;
+  top: 12%; /* Centré verticalement */
+  left: 50%; /* Centré horizontalement */
+  transform: translate(-50%, -50%); /* Ajuste le centrage */
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  outline: none;
+}
+
+#model-selector option {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+/* Styles des curseurs */
+#controls {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slider {
+  width: 200px;
+  margin: 10px 0;
+}
+
+label {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+/* Styles pour les curseurs */
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: #ddd;
+  outline: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+input[type="range"]:focus {
+  background: #aaa;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4CAF50;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Le container de la scène 3D */
+#scene-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Affichage du progress container */
+#progress-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  display: none;
+}
+
+.floating-text {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  width: 400px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.floating-text h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.floating-text p {
+  font-size: 1em;
+}
