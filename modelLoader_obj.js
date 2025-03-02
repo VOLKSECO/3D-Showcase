@@ -25,7 +25,7 @@ export function loadModel(scene, camera, controls) {
 
       // 🔹 Corriger l'orientation du modèle (rotation)
       
-      object.rotation.x = -Math.PI / 2; // Rotation de 90° autour de l'axe X (si nécessaire)
+      //object.rotation.x = -Math.PI / 2; // Rotation de 90° autour de l'axe X (si nécessaire)
       // Si l'objet est toujours couché, essayez une autre rotation comme object.rotation.y = Math.PI / 2;
 
       // 🔹 Ajuster la taille et poser le modèle sur le sol

@@ -9,9 +9,9 @@ export function createTextScene(scene) {
     loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
         // Définir les couleurs, tailles, et positions des textes
         const textData = [
-            { text: "threes.js", color: 0xffF000, size: 0.05, position: { x: -0.15, y: 0.0, z: .8 }, rotation: { x: -Math.PI / 2, y: 0 } },
-            { text: "CAD to Web", color: 0x00ff00, size: 0.25, position: { x: -1, y: 0, z: -1 }, rotation: { x: -Math.PI / 2, y: 0 } },
-            { text: "OBJ", color: 0x0000ff, size: 0.05, position: { x: -0.08, y: 0.05, z: .5 }, rotation: { x: -Math.PI / 2, y: 0 } }
+            { text: "Plans", color: 0xffc000, size: 0.05, position: { x: 1.2, y: 0.0, z: .01 }, rotation: { x: -Math.PI / 2, y: 0 } },
+            { text: "Infos", color: 0x92d050, size: 0.05, position: { x: -.3, y: 0, z: -.85 }, rotation: { x: -Math.PI / 2, y: 0 } },
+            { text: "Guide", color: 0x00b0f0, size: 0.05, position: { x: -0.3, y: 0.00, z: .9 }, rotation: { x: -Math.PI / 2, y: 0 } }
         ];
 
         // Création des textes
