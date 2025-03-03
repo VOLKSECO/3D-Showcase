@@ -138,7 +138,7 @@ export function createButtons(scene, camera, renderer) {
         if (clickedButton) {
           resetButton(clickedButton); // Réinitialiser l'ancien bouton cliqué
         }
-        clicked.material.color.set(0x0000ff); // Changer la couleur en bleu
+        clicked.material.color.set(0xffffff); // Changer la couleur en blanc
         clickedButton = clicked; // Sauvegarder le bouton cliqué
       }
       window.open(buttonLinks[clicked.name], '_blank'); // Ouvrir le lien
