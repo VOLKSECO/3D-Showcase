@@ -121,7 +121,7 @@ Reload the page in your browser.
 The new model should appear in the dropdown, with its description at the top and button texts/links working as specified.
 
 Project Structure
-
+```bash
 /3D-Showcase
 ├── index.html          # Entry point with model selector
 ├── index.css           # Styles for layout and responsiveness
