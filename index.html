@@ -16,6 +16,86 @@
     </script>
 </head>
 <body>
+    <div class="floating-text top-right">
+        <p><a href="https://volkseco.ch" target="_blank">volks.eco</a></p>
+    </div>
+    <div class="floating-text top-center" id="modelDescription">
+        <p>Select a model to see its description.</p>
+    </div>
+    <div class="model-selector">
+        <label for="modelSelect">Select a 3D Model:</label>
+        <select id="modelSelect" onchange="loadModel(this.value)">
+            <option value="">--Choose a model--</option>
+        </select>
+    </div>
+
     <script type="module" src="./main.js"></script>
+    <script>
+        let modelsData = []; // Store parsed models globally to avoid refetching
+
+        // Load and parse models once on page load
+        async function loadModelSelector() {
+            const response = await fetch('3D_models/models.md');
+            const markdown = await response.text();
+            modelsData = parseMarkdown(markdown);
+            
+            const modelSelect = document.getElementById('modelSelect');
+            modelsData.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.name;
+                option.textContent = model.name;
+                modelSelect.appendChild(option);
+            });
+
+            if (modelsData.length > 0) {
+                loadModel(modelsData[0].name); // Load first model
+            }
+        }
+
+        // Parse Markdown with improved regex and logging
+        function parseMarkdown(markdown) {
+            const models = [];
+            const lines = markdown.split('\n').map(line => line.trim());
+            let currentModel = null;
+
+            for (const line of lines) {
+                if (line.startsWith('# ')) {
+                    if (currentModel) models.push(currentModel);
+                    currentModel = { name: line.slice(2), description: '', links: [], texts: [] };
+                } else if (line.match(/^- Model Description: /)) {
+                    currentModel.description = line.replace('- Model Description: ', '');
+                } else if (line.match(/^- Model Link \d: /)) {
+                    const [_, num, value] = line.match(/^- Model Link (\d): (.+)/) || [];
+                    if (num && value) currentModel.links[parseInt(num) - 1] = value;
+                } else if (line.match(/^- Model Link text \d: /)) {
+                    const [_, num, value] = line.match(/^- Model Link text (\d): (.+)/) || [];
+                    if (num && value) currentModel.texts[parseInt(num) - 1] = value;
+                }
+            }
+            if (currentModel) {
+                // Ensure 3 links and texts, with fallbacks
+                while (currentModel.links.length < 3) currentModel.links.push('#');
+                while (currentModel.texts.length < 3) currentModel.texts.push(`Link ${currentModel.texts.length + 1}`);
+                models.push(currentModel);
+            }
+            console.log('Parsed models:', models);
+            return models;
+        }
+
+        // Load model using pre-parsed data
+        function loadModel(modelName) {
+            if (!modelName) return;
+            console.log("Loading model:", modelName);
+
+            const modelData = modelsData.find(m => m.name === modelName);
+            document.getElementById('modelDescription').innerHTML = `<p>${modelData.description}</p>`;
+            import('./main.js').then(main => {
+                console.log('Passing to main.js:', modelData.links, modelData.texts);
+                main.loadSelectedModel(modelName, modelData.links, modelData.texts);
+            });
+        }
+
+        window.onload = loadModelSelector;
+    </script>
 </body>
 </html>

@@ -1,143 +1,96 @@
-/* Styles globaux */
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   color: #333;
-  overflow: hidden; /* Pour éviter que la scène 3D dépasse */
+  overflow: hidden;
 }
 
-h1 {
-  text-align: center;
-  margin: 20px;
-  font-size: 2rem;
-}
-
-/* Mise en page du sélecteur de modèle */
-#model-selector {
-  position: absolute;
-  top: 12%; /* Centré verticalement */
-  left: 50%; /* Centré horizontalement */
-  transform: translate(-50%, -50%); /* Ajuste le centrage */
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border: 2px solid #333;
+/* Floating elements */
+.model-selector {
+  position: fixed;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  max-width: 400px;
+  background-color: rgba(5, 5, 5, 0.3);
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  outline: none;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-#model-selector option {
-  font-size: 1rem;
+.model-selector select {
+  width: 100%;
   padding: 5px;
 }
 
-/* Styles des curseurs */
-#controls {
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.floating-text {
+  position: fixed;
+  padding: 8px;
+  background-color: rgba(5, 5, 5, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-.slider {
-  width: 200px;
-  margin: 10px 0;
+.floating-text a {
+  color: #fcfcfc;
+  text-decoration: none;
 }
 
-label {
-  color: white;
-  margin-bottom: 5px;
-  font-size: 1rem;
+.floating-text a:hover {
+  text-decoration: underline;
 }
 
-/* Styles pour les curseurs */
-input[type="range"] {
-  width: 100%;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 10px;
-  background: #ddd;
-  outline: none;
-  border-radius: 5px;
-  transition: background 0.3s;
+/* Positioning */
+.top-right {
+  bottom: 1%;
+  right: 1%;
+  width: auto;
 }
 
-input[type="range"]:focus {
-  background: #aaa;
+.top-center {
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  max-width: 600px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #4CAF50;
-  border-radius: 50%;
-  cursor: pointer;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .model-selector {
+    width: 80%;
+    bottom: 2%;
+  }
+  .top-center {
+    width: 90%;
+    top: 2%;
+    font-size: 0.9em;
+  }
+  .top-right {
+    bottom: 1%;
+    right: 1%;
+    font-size: 0.9em;
+  }
 }
 
-input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #4CAF50;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Le container de la scène 3D */
+/* Scene container */
 #scene-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-/* Affichage du progress container */
-#progress-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  display: none;
-}
-
-.floating-text {
-  position: fixed;
-  top: 2%;
-  left: 2%;
-  width: 400px;
-  padding: 15px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.floating-text h2 {
-  margin-top: 0;
-  font-size: 1.2em;
-}
-
-.floating-text p {
-  font-size: 1em;
 }
