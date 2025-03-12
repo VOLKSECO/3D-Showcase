@@ -5,7 +5,7 @@ markdown
 
 A dynamic 3D model viewer built with [Three.js](https://threejs.org/), featuring a podium with interactive buttons and a Markdown-driven model selection system. Easily showcase 3D models (OBJ or GLTF) with customizable descriptions and button links.
 
-![Screenshot](https://via.placeholder.com/800x400.png?text=3D+Showcase+Screenshot) <!-- Replace with an actual screenshot URL -->
+![Screenshot](https://github.com/VOLKSECO/3D-Showcase/blob/main/screenshot.png) <!-- Replace with an actual screenshot URL -->
 
 ## Features
 - View 3D models on a podium with orbit controls.
@@ -15,12 +15,11 @@ A dynamic 3D model viewer built with [Three.js](https://threejs.org/), featuring
 - Responsive design for various screen sizes.
 
 ## Demo
-Try it live: [Link to Hosted Version](#) <!-- Replace with your hosted URL, e.g., GitHub Pages -->
-
+Try it live: [https://volkseco.github.io/3D-Showcase/](#)
 ## Installation
 
 ### Prerequisites
-- A modern web browser (Chrome, Firefox, etc.).
+- A modern web browser (Brave, Firefox, Chrome, etc.).
 - A local server (e.g., [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for VS Code or `npx http-server`).
 
 ### Steps to Download and Run
@@ -120,6 +119,9 @@ Reload the page in your browser.
 
 The new model should appear in the dropdown, with its description at the top and button texts/links working as specified.
 
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 Project Structure
 ```bash
 /3D-Showcase
@@ -141,7 +143,4 @@ Project Structure
 │   └── /[ModelName]/   # Folders with model files
 ├── README.md           # This file
 └── LICENSE             # License file (e.g., MIT)
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
