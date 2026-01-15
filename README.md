@@ -15,7 +15,7 @@ A dynamic 3D model viewer built with [Three.js](https://threejs.org/), featuring
 - Responsive design for various screen sizes.
 
 ## Demo
-Try it live: [https://volkseco.github.io/3D-Showcase/](#)
+Try it live: [https://volkseco.github.io/3D-Showcase/]
 ## Installation
 
 ### Prerequisites
